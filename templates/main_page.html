@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+    <link rel="stylesheet" href="{{ css }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+        header {
+          background-color: #cbbc97;
+          position: sticky;
+        }
+        footer {
+          background-color: #323433;
+          color: white;
+          text-align: center;
+          padding: 2.5% 0;
+        }
+        .logo {
+          text-align: center;
+        }
+        .font {
+          color: white;
+          font-size: 60px;
+        }
+        a {
+          text-decoration: none;
+        }
+        .card {
+          border-top: none;
+          border-bottom: none;
+          border-left: none;
+        }
+        .lop {
+          border-right: none;
+
+        }
+        .main {
+          margin-top: 15%;
+        }
+        .b1 {
+          vertical-align: center;
+          margin-left: auto;
+          margin-right: auto;
+
+        }
+        .b2 {
+          vertical-align: center;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 1em;
+          }
+        .btn-for {
+          background-color: #81979b;
+          color: white;
+          border-radius: 35px;
+          padding: 1.2rem 7rem;
+          transition: 0.5s;
+          font-weight: bold;
+          border: none;
+        }
+        .btn-for:hover {
+          background-color: #9dafb3;
+          color: #FFEFDF;
+          box-shadow: 7px 7px 7px #cccccc;
+        }
+        .pole {
+          padding: 1.2rem 7rem;
+          border-radius: 25px;
+          border-color: #a9bcc2;
+        }
+
+    </style>
+</head>
+<body>
+    {{ form.hidden_tag() }}
+    <header class="container-fluid">
+        <p class="logo font">PORTFOLIO</p>
+    </header>
+    <div class="card-group container main">
+        <div class="card card-body">
+          <p class="b1">
+            {{ form.text(type="text", class="pole", size=30) }}
+
+            {% for error in form.text.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+
+          </p>
+          <p class="b2" style="margin-top:0;border:0;">{{ form.sub(type="submit", class="btn-for") }}</p>
+        </div>
+        <div class="card card-body lop">
+
+            <a href="#modal_window" type="button" class="btn-for b1">ВОЙТИ</a>
+            <a href="#modal_window_2" type="button" class="btn-for b2">ЗАРЕГИСТРИРОВАТЬСЯ</a>
+
+        </div>
+    </div>
+    <footer class="fixed-bottom">
+        <a href="#" style="color:#81979b;">Ссылка на что-то)</a>
+    </footer>
+    <div id="modal_window">
+       <window>
+           <p class="wnd-hd">АВТОРИЗАЦИЯ</p>
+           <p>
+                {{ lg.email(type="email", class="in_wnd") }}
+                {% for error in lg.email.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+           </p>
+           <p>
+                {{ lg.password(type="password", class="in_wnd") }}
+                {% for error in lg.password.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+           </p>
+           <div class="d-flex mod">
+               <p>{{ lg.but(type="submit", class="wnd-bt") }}</p>
+               <a href="#close_window" class="wnd-cl">ОТМЕНА</a>
+           </div>
+       </window>
+    </div>
+    <div id="modal_window_2">
+       <window>
+           <div class="d-flex">
+               <p>{{ reg.but(type="submit", class="wnd-bt2") }}</p>
+                <a href="#close_window" class="wnd-cl">ОТМЕНА</a>
+           </div>
+       </window>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+</body>
+</html>
