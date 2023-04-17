@@ -129,6 +129,65 @@
     </div>
     <div id="modal_window_2">
        <window>
+           <p class="wnd-hd">Регистрация</p>
+           <p>
+               {{ reg.name(type="text", class="in_wnd") }}
+                {% for error in reg.name.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+            </p>
+           <p>
+                {{ reg.surname(type="text", class="in_wnd") }}
+                 {% for error in reg.surname.errors %}
+                     <div class="alert alert-danger" role="alert">
+                         {{ error }}
+                     </div>
+                 {% endfor %}
+           </p>
+           <p class="d-flex">
+                {{ reg.age.label(type="text", class="dop1") }}
+                {{ reg.age(type="int", class="in_wnd") }}
+                 {% for error in lg.password.errors %}
+                     <div class="alert alert-danger" role="alert">
+                         {{ error }}
+                     </div>
+                 {% endfor %}
+           </p>
+           <p class="d-flex">
+                {{ reg.sex.label(type="text", class="dop2") }}
+                {{ reg.sex(type="text", class="in_wnd") }}
+                 {% for error in reg.sex.errors %}
+                     <div class="alert alert-danger" role="alert">
+                         {{ error }}
+                     </div>
+                 {% endfor %}
+           </p>
+           <p>
+                {{ reg.phone(type="tel", class="in_wnd") }}
+                 {% for error in reg.phone.errors %}
+                     <div class="alert alert-danger" role="alert">
+                         {{ error }}
+                     </div>
+                 {% endfor %}
+           </p>
+           <p>
+                {{ reg.log(type="email", class="in_wnd") }}
+                 {% for error in reg.log.errors %}
+                     <div class="alert alert-danger" role="alert">
+                         {{ error }}
+                     </div>
+                 {% endfor %}
+           </p>
+           <p>
+                {{ reg.password(type="password", class="in_wnd") }}
+                 {% for error in reg.password.errors %}
+                     <div class="alert alert-danger" role="alert">
+                         {{ error }}
+                     </div>
+                 {% endfor %}
+           </p>
            <div class="d-flex">
                <p>{{ reg.but(type="submit", class="wnd-bt2") }}</p>
                 <a href="#close_window" class="wnd-cl">ОТМЕНА</a>

@@ -18,7 +18,7 @@
 
 window {
     position: absolute;
-    top: 30%;
+    top: 40%;
     left: 50%;
     width: 400px;
     border-radius: 20px;
@@ -77,7 +77,9 @@ div#main_text a.close_window {
     padding: 0.5rem 4.5rem;
     border-radius: 25px;
     border-color: #a9bcc2;
-    margin-left: 0.475em;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 .wnd-bt2 {
   padding: 0.5rem 3rem;
@@ -91,4 +93,16 @@ div#main_text a.close_window {
 .wnd-bt2:hover {
   background-color: #9dafb3;
   color: #FFEFDF;
+}
+.dop1 {
+  position: relative;
+  margin-top: 0.5rem;
+  margin-left: 0.7rem;
+  margin-right: 1.5rem;
+}
+.dop2 {
+  position: relative;
+  margin-top: 0.5rem;
+  margin-left: 0.7rem;
+  margin-right: 0.5rem;
 }
