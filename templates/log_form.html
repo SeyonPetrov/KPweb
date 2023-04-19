@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+
+{% block pay %}
+    <div class="window" style="top:30%;">
+           <p class="wnd-hd">АВТОРИЗАЦИЯ</p>
+           <p>
+                {{ form.email(type="email", class="in_wnd") }}
+                {% for error in form.email.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+           </p>
+           <p>
+                {{ form.password(type="password", class="in_wnd") }}
+                {% for error in form.password.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+           </p>
+           <div class="d-flex mod">
+               <p>{{ form.but(type="submit", class="wnd-bt") }}</p>
+               <a href="/" class="wnd-cl">ОТМЕНА</a>
+           </div>
+    </div>
+{% endblock %}

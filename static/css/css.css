@@ -16,9 +16,9 @@
     z-index: 9999999999;
 }
 
-window {
+.window {
     position: absolute;
-    top: 40%;
+    top: 45%;
     left: 50%;
     width: 400px;
     border-radius: 20px;

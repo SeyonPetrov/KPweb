@@ -1,0 +1,78 @@
+{% extends 'index.html' %}
+
+{% block pay %}
+{{ form.hidden_tag() }}
+    <form method="post" action="" class="window" style="top:50%;">
+        <p class="wnd-hd">Регистрация</p>
+        <p>
+            {{ form.name(type="text", class="in_wnd") }}
+             {% for error in form.name.errors %}
+                 <div class="alert alert-danger" role="alert">
+                     {{ error }}
+                 </div>
+             {% endfor %}
+         </p>
+        <p>
+             {{ form.surname(type="text", class="in_wnd") }}
+              {% for error in form.surname.errors %}
+                  <div class="alert alert-danger" role="alert">
+                      {{ error }}
+                  </div>
+              {% endfor %}
+        </p>
+        <p class="d-flex">
+             {{ form.age.label(type="text", class="dop1") }}
+             {{ form.age(type="int", class="in_wnd") }}
+              {% for error in form.password.errors %}
+                  <div class="alert alert-danger" role="alert">
+                      {{ error }}
+                  </div>
+              {% endfor %}
+        </p>
+        <p class="d-flex">
+             {{ form.sex.label(type="text", class="dop2") }}
+             {{ form.sex(type="text", class="in_wnd") }}
+              {% for error in form.sex.errors %}
+                  <div class="alert alert-danger" role="alert">
+                      {{ error }}
+                  </div>
+              {% endfor %}
+        </p>
+        <p>
+             {{ form.phone(type="tel", class="in_wnd") }}
+              {% for error in form.phone.errors %}
+                  <div class="alert alert-danger" role="alert">
+                      {{ error }}
+                  </div>
+              {% endfor %}
+        </p>
+        <p>
+             {{ form.log(type="email", class="in_wnd") }}
+              {% for error in form.log.errors %}
+                  <div class="alert alert-danger" role="alert">
+                      {{ error }}
+                  </div>
+              {% endfor %}
+        </p>
+        <p>
+             {{ form.password(type="password", class="in_wnd") }}
+              {% for error in form.password.errors %}
+                  <div class="alert alert-danger" role="alert">
+                      {{ error }}
+                  </div>
+              {% endfor %}
+        </p>
+        <p>
+            {{ form.repeat_pw(type="password", class="in_wnd") }}
+              {% for error in form.repeat_pw.errors %}
+                  <div class="alert alert-danger" role="alert">
+                      {{ error }}
+                  </div>
+              {% endfor %}
+        </p>
+        <div class="d-flex">
+            <p>{{ form.but(type="submit", class="wnd-bt2") }}</p>
+             <a href="/" class="wnd-cl">ОТМЕНА</a>
+        </div>
+    </form>
+{% endblock %}
