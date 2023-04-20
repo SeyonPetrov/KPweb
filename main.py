@@ -25,7 +25,7 @@ def main():
     db_sess = db_session.create_session()
     @app.route("/", methods=['GET', 'POST'])
     def index():
-        global profil
+        global glav, profil
         js = url_for('static', filename='lg/jquery.js')
         glavccs = url_for('static', filename='lg/Главная.css')
         jvnicepage = url_for('static', filename='lg/nicepage.js')
@@ -41,6 +41,7 @@ def main():
         if current_user.is_authenticated:
             if form.validate_on_submit():
                 id = form.id.data
+                add_news()
                 print(id)
                 return redirect(f'/portfolio/{id}')
             return render_template("Главная.html", js=jvnicepage, js2=js, glav=glav, glavcss=glavccs, str1=str1ccs, str2=str1ccs, ni=nicepageccs, reg=reg, log=ou, form=form, css=css)
@@ -94,6 +95,7 @@ def main():
             db_sess = db_session.create_session()
             user = db_sess.query(User).filter(User.email == form.email.data).first()
             if user and user.check_password(form.password.data):
+
                 login_user(user, remember=form.remember_me.data)
                 return redirect("/")
             return render_template('login.html',
