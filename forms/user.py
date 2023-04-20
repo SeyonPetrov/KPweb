@@ -23,3 +23,7 @@ class LoginForm(FlaskForm):
     remember_me = BooleanField('Запомнить меня')
     submit = SubmitField('Войти')
 
+class IDForm(FlaskForm):
+    id = IntegerField('ID', validators=[DataRequired()])
+    submit = SubmitField('Поиск')
+

@@ -666,7 +666,7 @@ ol {
 .u-btn {
   /*display: inline-block;*/
   display: table;
-  /*TODO maye need another solution for negative marin*/
+  
   cursor: pointer;
   color: inherit;
   font-size: inherit;
@@ -6917,8 +6917,8 @@ section.u-image:not(.u-hover-box),
   height: 100%;
 }
 .u-expanded-width {
-
-  margin-left: 25% !important;
+  width: 100% !important;
+  margin-left: 0 !important;
   margin-right: 0 !important;
 }
 @media (min-width: 1400px) {
