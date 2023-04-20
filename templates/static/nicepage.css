@@ -666,7 +666,7 @@ ol {
 .u-btn {
   /*display: inline-block;*/
   display: table;
-  
+
   cursor: pointer;
   color: inherit;
   font-size: inherit;
