@@ -45,7 +45,12 @@ def main():
                 print(id)
                 return redirect(f'/portfolio/{id}')
             return render_template("Главная.html", js=jvnicepage, js2=js, glav=glav, glavcss=glavccs, str1=str1ccs, str2=str1ccs, ni=nicepageccs, reg=reg, log=ou, form=form, css=css)
-        return render_template("Страница-2.html", js=jvnicepage, js2=js, glav=glav, glavcss=glavccs, str1=str1ccs, str2=str1ccs, ni=nicepageccs, reg=reg, log=ou)
+        if form.validate_on_submit():
+            id = form.id.data
+            add_news()
+            print(id)
+            return redirect(f'/portfolio/{id}')
+        return render_template("Страница-2.html", js=jvnicepage, js2=js, glav=glav, glavcss=glavccs, str1=str1ccs, str2=str1ccs, ni=nicepageccs, reg=reg, log=ou, form=form, css=css)
 
     @app.route('/Главная.html', methods=['GET', 'POST'])
     def glav():
@@ -223,7 +228,6 @@ def main():
             return redirect('/Страница-1.html')
 
     @app.route('/portfolio/<int:id>', methods=['POST', 'GET'])
-    @login_required
     def portfolio(id):
         global profil
         db_sess = db_session.create_session()

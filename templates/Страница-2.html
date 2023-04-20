@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="{{ str2 }}" media="screen">
     <script class="u-script" type="text/javascript" src="{{ js2 }}" defer=""></script>
     <script class="u-script" type="text/javascript" src="{{ js }}" defer=""></script>
+    <link rel="stylesheet" href="{{ css }}">
     <meta name="generator" content="Nicepage 5.7.9, nicepage.com">
     <meta name="referrer" content="origin">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
@@ -25,7 +26,72 @@
     <meta name="theme-color" content="#478ac9">
     <meta property="og:title" content="Страница 2">
     <meta property="og:type" content="website">
-  <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
+  <meta data-intl-tel-input-cdn-path="intlTelInput/"><style>
+        header {
+          background-color: #cbbc97;
+          position: sticky;
+        }
+        footer {
+          background-color: #323433;
+          color: white;
+          text-align: center;
+          padding: 2.5% 0;
+        }
+        .logo {
+          text-align: center;
+        }
+        .font {
+          color: white;
+          font-size: 60px;
+        }
+        a {
+          text-decoration: none;
+        }
+        .card {
+          border-top: none;
+          border-bottom: none;
+          border-left: none;
+        }
+        .lop {
+          border-right: none;
+
+        }
+        .main {
+          margin-top: 15%;
+        }
+        .b1 {
+          vertical-align: center;
+          margin-left: auto;
+          margin-right: auto;
+
+        }
+        .b2 {
+          vertical-align: center;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 1em;
+          }
+        .btn-for {
+          background-color: #81979b;
+          color: white;
+          border-radius: 35px;
+          padding: 1.2rem 7rem;
+          transition: 0.5s;
+          font-weight: bold;
+          border: none;
+        }
+        .btn-for:hover {
+          background-color: #9dafb3;
+          color: #FFEFDF;
+          box-shadow: 7px 7px 7px #cccccc;
+        }
+        .pole {
+          padding: 1.2rem 7rem;
+          border-radius: 25px;
+          border-color: #a9bcc2;
+        }
+
+    </style></head>
   <body class="u-body u-xl-mode" data-lang="ru"><header class="u-clearfix u-custom-color-4 u-header u-header" id="sec-0104"><div class="u-clearfix u-sheet u-sheet-1">
         <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1">
           <div class="menu-collapse" style="font-weight: 700;">
@@ -62,25 +128,32 @@
       <div class="u-clearfix u-sheet u-sheet-1">
         <h2 class="u-text u-text-custom-color-3 u-text-1">Найти портфолио</h2>
         <a href="{{ log }}" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-3 u-hover-custom-color-5 u-radius-50 u-btn-1"> Войти</a>
+          <a href="{{ reg }}" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-4 u-hover-custom-color-6 u-radius-50 u-btn-3">Зарегистрироваться</a>
+
         <div class="u-custom-color-4 u-form u-form-1">
-          <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-horizontal u-form-spacing-10 u-inner-form" style="padding: 10px" source="email" name="form">
-            <div class="u-form-group u-form-group-1">
-              <label for="email-2555" class="u-label u-label-1">ID</label>
-              <input type="text" placeholder="Введите ID" id="email-2555" name="Id" class="u-border-4 u-border-white u-input u-input-rectangle u-radius-50">
             </div>
-            <div class="u-align-left u-form-group u-form-submit">
-              <a href="#" class="u-active-grey-90 u-border-4 u-border-active-grey-90 u-border-grey-75 u-border-hover-grey-90 u-btn u-btn-round u-btn-submit u-button-style u-custom-color-3 u-hover-custom-color-5 u-radius-50 u-btn-2">ПОИСК</a>
-              <input type="submit" value="submit" class="u-form-control-hidden">
-            </div>
-            <div class="u-form-send-message u-form-send-success"> Thank you! </div>
-            <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
-            <input type="hidden" value="" name="recaptchaResponse">
-            <input type="hidden" name="formServices" value="fbb3ca349828eca1cdeec725adda10cf">
-          </form>
         </div>
-        <a href="{{ reg }}" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-4 u-hover-custom-color-6 u-radius-50 u-btn-3">Зарегистрироваться</a>
-      </div>
     </section>
+          <form action="" method="post">
+{{ form.hidden_tag() }}
+
+    <div class="card-group container main">
+        <div class="card card-body">
+          <p class="b1">
+            {{ form.id(type="text", class="pole", size=30) }}
+
+            {% for error in form.id.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+
+          </p>
+          <p class="b2" style="margin-top:0;border:0;">{{ form.submit(type="submit", class="btn-for") }}</p>
+        </div>
+        {{message}}
+</form>
+
     
     
     
