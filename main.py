@@ -7,7 +7,6 @@ from data.users import User
 from forms.user import RegisterForm, LoginForm, IDForm
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
-import django
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
