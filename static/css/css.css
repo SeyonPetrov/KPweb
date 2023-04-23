@@ -16,9 +16,9 @@
     z-index: 9999999999;
 }
 
-window {
+.window {
     position: absolute;
-    top: 40%;
+    top: 45%;
     left: 50%;
     width: 400px;
     border-radius: 20px;
@@ -43,10 +43,10 @@ div#main_text a.close_window {
   border-radius: 20px;
 }
 .wnd-bt {
-  padding: 0.5rem 4.5rem;
+  padding: 0.5rem 9rem;
   background-color: #81979b;
   color: white;
-  border-radius: 35px 0 0 35px;
+  border-radius: 35px;
   transition: 0.5s;
   font-weight: bold;
   border: none;
@@ -82,10 +82,10 @@ div#main_text a.close_window {
     display: block;
 }
 .wnd-bt2 {
-  padding: 0.5rem 3rem;
+  padding: 0.5rem 9rem;
   background-color: #81979b;
   color: white;
-  border-radius: 35px 0 0 35px;
+  border-radius: 35px;
   transition: 0.5s;
   font-weight: bold;
   border: none;
@@ -105,4 +105,89 @@ div#main_text a.close_window {
   margin-top: 0.5rem;
   margin-left: 0.7rem;
   margin-right: 0.5rem;
+}
+header {
+  background-color: #cbbc97;
+  position: sticky;
+  padding: 0.5rem;
+
+}
+footer {
+  background-color: #323433;
+  color: white;
+  text-align: center;
+  padding: 2.5% 0;
+}
+.logo {
+  text-align: center;
+}
+.font {
+  color: white;
+  font-size: 60px;
+}
+a {
+  text-decoration: none;
+}
+.main {
+  margin-top: 8%;
+}
+.b1 {
+  vertical-align: center;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+.b2 {
+  vertical-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  }
+.btn-for {
+  background-color: #81979b;
+  color: white;
+  border-radius: 35px;
+  padding: 1.2rem 7rem;
+  transition: 0.5s;
+  font-weight: bold;
+  border: none;
+}
+.btn-for:hover {
+  background-color: #9dafb3;
+  color: #FFEFDF;
+  box-shadow: 7px 7px 7px #cccccc;
+}
+.pole {
+  padding: 1.2rem 7rem;
+  border-radius: 25px;
+  border-color: #a9bcc2;
+}
+.foo {
+  text-decoration: none;
+  color: gray;
+  transition: 0.3s;
+}
+.foo:hover {
+  color: white;
+}
+.dop-bt {
+  top: -3rem;
+}
+.age {
+  width: 70%
+}
+.radio {
+  position: relative;
+  left: 30%;
+  top: -3.5rem;
+  margin-bottom: none;
+}
+.joke {
+  width: 30rem;
+  height: 10rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  border: none;
+  margin-top: 5rem;
 }

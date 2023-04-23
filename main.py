@@ -1,12 +1,9 @@
 from flask import Flask, render_template, redirect, abort, request, url_for
 from data import db_session
 from data.files import Files
-import shutil
-import os
 from data.users import User
-from forms.user import RegisterForm, LoginForm, IDForm
+from forms.user import RegisterForm, LoginForm, IDForm, AnecForm
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
-from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
@@ -36,6 +33,7 @@ def main():
         reg = url_for('register')
         ou = url_for('login')
         form = IDForm()
+        anec = AnecForm()
         db_sess = db_session.create_session()
         if current_user.is_authenticated:
             if form.validate_on_submit():
@@ -49,7 +47,8 @@ def main():
             add_news()
             print(id)
             return redirect(f'/portfolio/{id}')
-        return render_template("Страница-2.html", js=jvnicepage, js2=js, glav=glav, glavcss=glavccs, str1=str1ccs, str2=str1ccs, ni=nicepageccs, reg=reg, log=ou, form=form, css=css)
+        return render_template("Страница-2.html", js=jvnicepage, js2=js, glav=glav, glavcss=glavccs, str1=str1ccs,
+                               str2=str1ccs, ni=nicepageccs, reg=reg, log=ou, form=form, css=css, anec=anec)
 
     @app.route('/Главная.html', methods=['GET', 'POST'])
     def glav():
@@ -59,9 +58,7 @@ def main():
             return redirect(f'/portfolio/{id}')
 
         return render_template('Главная.html', title='Регистрация',
-                                       form=form)
-
-
+                               form=form)
 
     @app.route('/register', methods=['GET', 'POST'])
     def register():
@@ -273,7 +270,7 @@ def main():
                                    im_file_mysik=im_file_mysik, im_file_shutze=im_file_shutze,
                                im_file_human=im_file_human, image=image, profil=profil)
 
-    app.run()
+    app.run(port=8080, debug=True)
 
 
 if __name__ == '__main__':
