@@ -17,7 +17,7 @@ def load_user(user_id):
 
 
 def main():
-    db_session.global_init("db/owners123.db")
+    db_session.global_init("db/owners12.db")
     db_sess = db_session.create_session()
     @app.route("/", methods=['GET', 'POST'])
     def index():
@@ -83,7 +83,8 @@ def main():
                 address=form.address.data,
                 age=form.age.data,
                 phone_num=form.phone_num.data,
-                sex=form.sex.data
+                sex=form.sex.data,
+                avatar=str(url_for('static', filename=f'images/2021056-0.jpeg'))
             )
             user.set_password(form.password.data)
             db_sess.add(user)
@@ -127,6 +128,7 @@ def main():
         glav = url_for('index')
         reg = url_for('register')
         ou = url_for('login')
+        add_avatar = url_for('add_avatar')
         add_file = url_for('sample_file_upload')
         if current_user.is_authenticated:
             db_sess = db_session.create_session()
@@ -138,6 +140,7 @@ def main():
             file_shutze = db_sess.query(Files).filter(Files.user_id == user.id, Files.type == 'Волонтёрство')
             file_human = db_sess.query(Files).filter(Files.user_id == user.id, Files.type == 'Общество')
             image = db_sess.query(Files).filter(Files.user_id == user.id, Files.type_f == 'image/jpeg')
+            avatar = current_user.avatar
             if file_sport == None:
                 file_sport = 'Пусто'
             if file_lernen == None:
@@ -154,7 +157,7 @@ def main():
                                    str2=str2ccs, ni=nicepageccs, current_user=user, reg=reg, log=ou, add=add_file,
                                    file_sport=file_sport, file_lernen=file_lernen, file_malen=file_malen,
                                    file_mysik=file_mysik, file_shutze=file_shutze, file_human=file_human, image=image,
-                                   logout=logout)
+                                   logout=logout, ava=avatar, add_avatar=add_avatar)
         else:
             form = LoginForm()
             if form.validate_on_submit():
@@ -182,7 +185,7 @@ def main():
                                  integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
                                  crossorigin="anonymous">
                                 <link rel="stylesheet" type="text/css" href="{url_for('static', filename='css/style.css')}" />
-                                <title>Пример загрузки файла</title>
+                                <title>Загрузить файл</title>
                               </head>
                               <body>
                                 <h1 style=".block-level {{
@@ -307,6 +310,85 @@ def main():
                 info=inf
             )
             current_user.file.append(file)
+            db_sess.merge(current_user)
+            db_sess.commit()
+            return redirect('/Страница-1.html')
+
+    @app.route('/add_avatar', methods=['POST', 'GET'])
+    @login_required
+    def add_avatar():
+        if request.method == 'GET':
+            return f'''<!doctype html>
+                                <html lang="en">
+                                  <head>
+                                    <meta charset="utf-8">
+                                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                                     <link rel="stylesheet"
+                                     href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+                                     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+                                     crossorigin="anonymous">
+                                    <link rel="stylesheet" type="text/css" href="{url_for('static', filename='css/style.css')}" />
+                                    <title>Изменить аватар</title>
+                                  </head>
+                                  <body>
+                                    <h1 style=".block-level {{
+                                                            width: 120px;
+                                                            height: 120px;
+                                                            margin: 20px;
+                                                            position: relative;
+                                                            float: left;
+                                                        }};
+                                                            font-family: Roboto,sans-serif;
+                                                            text-align: center;
+                                                            font-weight: 900;
+                                                            margin: 60px auto 0;
+                                                            color: #a9bcc2 !important;
+                                                        ">Изменить аватар</h1>
+                                    <form method="post" enctype="multipart/form-data">
+                                    
+                                       <div class="form-group">
+                                            <input type="file" class="form-control-file" id="photo" name="file" style="
+                                                                                    font-family: Roboto,sans-serif;
+                                                                                    text-align: center;
+                                                                                    font-weight: 900;
+                                                                                    margin-left: 25%;
+                                                                                    color: #ffffff !important;
+                                                                                    background-color: #9dafb3;
+                                                                                    color: #FFEFDF;
+                                                                                    box-shadow: 7px 7px 7px #9dafb3;
+                                                                                    padding: 6px 12px;
+                                                                                    cursor: pointer;
+                                                                                    -webkit-border-radius: 5px;
+                                                                                    border-radius: 1.2rem;
+                                                                                    text-decoration-color: #34b8b8;
+                                                                                    -moz-border-radius: 5px;
+                                                                                    width: 50%;
+                                                                                    text-align: center;
+                                                                                    margin-top: 90px;
+                                                                                ">
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-primary" style="
+                                                                                background-color: #9dafb3;
+                                                                                border-color: #9dafb3;
+                                                                                box-shadow: rgb(157, 175, 179) 7px 7px 7px;
+                                                                                margin-left: 47%;
+                                                                                /* margin-top: 3%; */
+                                                                                /* margin-block: 3%; */
+                                                                                align-items: center;
+                                                                                border-radius: 1.2rem;
+                                                                                margin-top: 30px;
+                                                                            ">Отправить</button>
+                                    </form>
+                                  </body>
+                                </html>'''
+        elif request.method == 'POST':
+            f = request.files['file']
+            db_sess = db_session.create_session()
+            user = current_user
+            f.save(f"static/Аватары/{f.filename}")
+            url = url_for('static', filename=f'Аватары/{f.filename}')
+            current_user.avatar = url
             db_sess.merge(current_user)
             db_sess.commit()
             return redirect('/Страница-1.html')
