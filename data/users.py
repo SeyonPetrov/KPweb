@@ -23,7 +23,7 @@ class User(SqlAlchemyBase, UserMixin, SerializerMixin):
     sex = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     modified_date = sqlalchemy.Column(sqlalchemy.DateTime,
                                       default=datetime.datetime.now())
-
+    avatar = sqlalchemy.Column(sqlalchemy.String, default='http://127.0.0.1:5000/static/images/2021056-0.jpeg')
     file = orm.relationship('Files', back_populates='user')
 
     def __repr__(self):
