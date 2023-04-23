@@ -185,11 +185,48 @@ def main():
                                 <title>Пример загрузки файла</title>
                               </head>
                               <body>
-                                <h1>Загрузим файл</h1>
+                                <h1 style=".block-level {{
+                                                        width: 120px;
+                                                        height: 120px;
+                                                        margin: 20px;
+                                                        position: relative;
+                                                        float: left;
+                                                    }};
+                                                        font-family: Roboto,sans-serif;
+                                                        text-align: center;
+                                                        font-weight: 900;
+                                                        margin: 60px auto 0;
+                                                        color: #a9bcc2 !important;
+                                                    ">Загрузим файл</h1>
                                 <form method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                        <label for="classSelect">В каком вы классе</label>
-                                        <select class="form-control" id="classSelect" name="class">
+                                        <h4 style=".block-level {{
+                                                        width: 120px;
+                                                        height: 120px;
+                                                        margin: 20px;
+                                                        position: relative;
+                                                        float: left;
+                                                    }};
+                                                        font-family: Roboto,sans-serif;
+                                                        text-align: center;
+                                                        font-weight: 900;
+                                                        margin: 60px auto 0;
+                                                        color: #a9bcc2 !important;
+                                                    ">Выбрать категорию</h4>
+                                        <select class="form-control" id="classSelect" name="class" style="
+                                                                                    width: 50%;
+                                                                                    font-weight: 900;
+                                                                                    text-align: center;
+                                                                                    font-family: Roboto,sans-serif;
+                                                                                    background-color: #9dafb3;
+                                                                                    color: #fcfcfc !important;
+                                                                                    box-shadow: 7px 7px 7px #9dafb3;
+                                                                                    margin-left: 25%;
+                                                                                    margin-top: 3%;
+                                                                                    margin-block: 3%;
+                                                                                    align-items: center;
+                                                                                    border-radius: 1.2rem;
+                                                                                ">
                                           <option>Спорт</option>
                                           <option>Учёба</option>
                                           <option>Рисование</option>
@@ -199,16 +236,64 @@ def main():
                                         </select>
                                      </div>
                                    <div class="form-group">
-                                        <label for="photo">Выберите файл</label>
-                                        <input type="file" class="form-control-file" id="photo" name="file">
+                                        <input type="file" class="form-control-file" id="photo" name="file" style="
+                                                                                font-family: Roboto,sans-serif;
+                                                                                text-align: center;
+                                                                                font-weight: 900;
+                                                                                margin-left: 25%;
+                                                                                color: #ffffff !important;
+                                                                                background-color: #9dafb3;
+                                                                                color: #FFEFDF;
+                                                                                box-shadow: 7px 7px 7px #9dafb3;
+                                                                                padding: 6px 12px;
+                                                                                cursor: pointer;
+                                                                                -webkit-border-radius: 5px;
+                                                                                border-radius: 1.2rem;
+                                                                                text-decoration-color: #34b8b8;
+                                                                                -moz-border-radius: 5px;
+                                                                                width: 50%;
+                                                                                text-align: center;
+                                                                                
+                                                                            ">
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Отправить</button>
+                                    <div class="form-group">
+                                    <h4 style=".block-level {{
+                                                        width: 120px;
+                                                        height: 120px;
+                                                        margin: 20px;
+                                                        position: relative;
+                                                        float: left;
+                                                    }};
+                                                        font-family: Roboto,sans-serif;
+                                                        text-align: center;
+                                                        font-weight: 900;
+                                                        margin: 60px auto 0;
+                                                        color: #a9bcc2 !important;
+                                                    ">Добавить описание</h4>
+                                    <textarea class="form-control" id="about" rows="3" name="about" style="width: 50%;
+                                     font-weight: 900; text-align: center; font-family: Roboto, sans-serif;
+                                      background-color: rgb(157, 175, 179); box-shadow: rgb(157, 175, 179) 7px 7px 7px;
+                                       margin-left: 25%; margin-top: 3%; margin-block: 3%; align-items: center;
+                                        border-radius: 1.2rem; color: rgb(252, 252, 252) !important;
+                                         height: 109px;"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" style="
+                                                                            background-color: #9dafb3;
+                                                                            border-color: #9dafb3;
+                                                                            box-shadow: rgb(157, 175, 179) 7px 7px 7px;
+                                                                            margin-left: 47%;
+                                                                            /* margin-top: 3%; */
+                                                                            /* margin-block: 3%; */
+                                                                            align-items: center;
+                                                                            border-radius: 1.2rem;
+                                                                        ">Отправить</button>
                                 </form>
                               </body>
                             </html>'''
         elif request.method == 'POST':
             f = request.files['file']
             f1 = request.form['class']
+            inf = request.form['about']
             db_sess = db_session.create_session()
             user = current_user
             f.save(f"static/Portfolio/{f.filename}")
@@ -218,7 +303,8 @@ def main():
                 user_id=current_user.id,
                 type_f=f.content_type,
                 url_address=url,
-                type=f1
+                type=f1,
+                info=inf
             )
             current_user.file.append(file)
             db_sess.merge(current_user)
