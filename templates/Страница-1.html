@@ -102,7 +102,7 @@
                       <tr style="height: 76px;">
                         <td class="u-align-left u-first-column u-grey-5 u-table-cell u-text-custom-color-3 u-table-cell-5">Контактные данные<br>
                         </td>
-                        <td class="u-table-cell">{{ current_user.address }}</td>
+                        <td class="u-table-cell">{{ current_user.phone_num }}</td>
                       </tr>
                       <tr style="height: 76px;">
                         <td class="u-align-left u-grey-5 u-table-cell u-text-custom-color-3 u-table-cell-7">Место работы/учёбы</td>
@@ -146,7 +146,7 @@
                         <img class="u-expanded-width u-image u-image-default u-image-2" width="50%" alt="" data-image-width="2836" data-image-height="1875" src="{{i.url_address}}">
                         <h4 class="u-text u-text-2">{{i.type}}</h4>
                         <p class="u-text u-text-3">{{i.info}}</p>
-                        <a href="{{i.url_address}}"class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-no-left u-border-no-right u-border-no-top u-border-palette-1-base u-btn u-button-style u-hover-none u-none u-text-hover-palette-2-base u-text-palette-1-base u-btn-2">Файл 1</a>
+                        <a href="{{i.url_address}}"class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-hover-palette-2-base u-border-no-left u-border-no-right u-border-no-top u-border-palette-1-base u-btn u-button-style u-hover-none u-none u-text-hover-palette-2-base u-text-palette-1-base u-btn-2">Открыть</a>
                       </div>
                     </div>
 
@@ -269,7 +269,7 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
                           {% for i in file_sport %}
                         <a href="{{ i.url_address }}" class="u-active-none u-border-active-palette-2-dark-1 u-border-custom-color-4 u-border-hover-palette-2-base u-border-none u-btn u-button-style u-custom-item u-none u-text-custom-color-4 u-text-hover-palette-2-base u-btn-10">{{ i.info }}</a>
                         {% endfor %}
-                           <a href="" class="u-border-2 u-border-custom-color-3 u-border-hover-custom-color-3 u-btn u-btn-round u-button-style u-hover-custom-color-1 u-none u-radius-50 u-btn-12">Добавить</a>
+                           <a href="{{ add }}" class="u-border-2 u-border-custom-color-3 u-border-hover-custom-color-3 u-btn u-btn-round u-button-style u-hover-custom-color-1 u-none u-radius-50 u-btn-12">Добавить</a>
                       </div>
                     </div>
                     <div class="u-align-center u-container-style u-custom-item u-list-item u-repeater-item u-video-cover u-white">
@@ -278,7 +278,7 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
                           {% for i in file_malen %}
                         <a href="{{ i.url_address }}" class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-custom-color-4 u-border-hover-palette-2-base u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-custom-item u-hover-none u-none u-text-custom-color-4 u-text-hover-palette-2-base u-btn-13">{{ i.info }}</a>
                         {% endfor %}
-                         <a href="" class="u-border-2 u-border-custom-color-3 u-border-hover-custom-color-3 u-btn u-btn-round u-button-style u-hover-custom-color-1 u-none u-radius-50 u-btn-15">Добавить</a>
+                         <a href="{{ add }}" class="u-border-2 u-border-custom-color-3 u-border-hover-custom-color-3 u-btn u-btn-round u-button-style u-hover-custom-color-1 u-none u-radius-50 u-btn-15">Добавить</a>
                       </div>
                     </div>
                     <div class="u-align-center u-container-style u-custom-item u-list-item u-repeater-item u-white u-list-item-11">
@@ -306,7 +306,7 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
                           {% for i in file_lernen %}
                         <a href="{{ i.url_address }}" class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-custom-color-4 u-border-hover-palette-2-base u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-custom-item u-hover-none u-none u-text-custom-color-4 u-text-hover-palette-2-base u-btn-16">{{ i.info }}</a>
                         {% endfor %}
-                         <a href="" class="u-border-2 u-border-custom-color-3 u-border-hover-custom-color-3 u-btn u-btn-round u-button-style u-hover-custom-color-1 u-none u-radius-50 u-btn-18">Добавить</a>
+                         <a href="{{ add }}" class="u-border-2 u-border-custom-color-3 u-border-hover-custom-color-3 u-btn u-btn-round u-button-style u-hover-custom-color-1 u-none u-radius-50 u-btn-18">Добавить</a>
                       </div>
                     </div>
                     <div class="u-align-center u-container-style u-custom-item u-list-item u-repeater-item u-video-cover u-white">
@@ -315,7 +315,7 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
                           {% for i in file_mysik %}
                         <a href="{{ i.url_address }}" class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-custom-color-4 u-border-hover-palette-2-base u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-custom-item u-hover-none u-none u-text-custom-color-4 u-text-hover-palette-2-base u-btn-19">{{ i.info }}</a>
                         {% endfor %}
-                         <a href="" class="u-border-2 u-border-custom-color-3 u-border-hover-custom-color-3 u-btn u-btn-round u-button-style u-hover-custom-color-1 u-none u-radius-50 u-btn-21">Добавить</a>
+                         <a href="{{ add }}" class="u-border-2 u-border-custom-color-3 u-border-hover-custom-color-3 u-btn u-btn-round u-button-style u-hover-custom-color-1 u-none u-radius-50 u-btn-21">Добавить</a>
                       </div>
                     </div>
                     <div class="u-align-center u-container-style u-custom-item u-list-item u-repeater-item u-video-cover u-white">
@@ -350,7 +350,7 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
                           {% for i in file_shutze %}
                         <a href="{{ i.url_address }}" class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-custom-color-4 u-border-hover-palette-2-base u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-custom-item u-hover-none u-none u-text-custom-color-4 u-text-hover-palette-2-base u-btn-23">{{ i.info }}</a>
                           {% endfor %}
-                        <a href="" class="u-border-2 u-border-custom-color-3 u-border-hover-custom-color-3 u-btn u-btn-round u-button-style u-hover-custom-color-1 u-none u-radius-50 u-btn-24">Добавить</a>
+                        <a href="{{ add }}" class="u-border-2 u-border-custom-color-3 u-border-hover-custom-color-3 u-btn u-btn-round u-button-style u-hover-custom-color-1 u-none u-radius-50 u-btn-24">Добавить</a>
                       </div>
                     </div>
                     <div class="u-align-center u-container-style u-custom-item u-list-item u-repeater-item u-video-cover u-white">
@@ -360,9 +360,9 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
           </span>
                         <h3 class="u-text u-text-23">Общество</h3>
                           {% for i in file_human %}
-                        <a href="{{ i.url_address }}" class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-custom-color-4 u-border-hover-palette-2-base u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-custom-item u-hover-none u-none u-text-custom-color-4 u-text-hover-palette-2-base u-btn-25">Ссылка</a>
+                        <a href="{{ i.url_address }}" class="u-active-none u-border-2 u-border-active-palette-2-dark-1 u-border-custom-color-4 u-border-hover-palette-2-base u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-custom-item u-hover-none u-none u-text-custom-color-4 u-text-hover-palette-2-base u-btn-25">{{ i.info }}</a>
                         {% endfor %}
-                          <a href="" class="u-border-2 u-border-custom-color-3 u-border-hover-custom-color-3 u-btn u-btn-round u-button-style u-hover-custom-color-1 u-none u-radius-50 u-btn-27">Добавить</a>
+                          <a href="{{ add }}" class="u-border-2 u-border-custom-color-3 u-border-hover-custom-color-3 u-btn u-btn-round u-button-style u-hover-custom-color-1 u-none u-radius-50 u-btn-27">Добавить</a>
                       </div>
                     </div>
                   </div>
