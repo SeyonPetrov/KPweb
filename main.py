@@ -1,7 +1,10 @@
-from flask import Flask, render_template, redirect, abort, request, url_for
+from flask import Flask, render_template, redirect, abort, request, url_for, make_response, jsonify
 from data import db_session
 from data.files import Files
 from data.users import User
+import requests
+from flask_restful import Api
+from restApi import UsersResource, UsersListRes
 from forms.user import RegisterForm, LoginForm, IDForm, AnecForm, TextApiForm
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 
@@ -9,6 +12,8 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 login_manager = LoginManager()
 login_manager.init_app(app)
+api = Api(app)
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -19,6 +24,9 @@ def load_user(user_id):
 def main():
     db_session.global_init("db/owners12.db")
     db_sess = db_session.create_session()
+    api.add_resource(UsersResource, '/api/v2/users/<int:user_id>')
+    api.add_resource(UsersListRes, '/api/v2/users')
+
     @app.route("/", methods=['GET', 'POST'])
     def index():
         global glav, profil
@@ -63,6 +71,14 @@ def main():
         return render_template('Главная.html', title='Регистрация',
                                form=form, text=TextApiForm())
 
+    def generator():
+        length = '10'
+        api_url = 'https://api.api-ninjas.com/v1/passwordgenerator?length={}'.format(length)
+        response = requests.get(api_url, headers={'X-Api-Key': 'fg4oSPFJZ1Xy+8uIlK3Csg==ViW2Xa7h9Q1MzVgN'})
+        if response:
+            return response.json()['random_password']
+        return None
+
     @app.route('/register', methods=['GET', 'POST'])
     def register():
         form = RegisterForm()
@@ -76,6 +92,7 @@ def main():
                 return render_template('register.html', title='Регистрация',
                                        form=form,
                                        message="Такой пользователь уже есть")
+
             user = User(
                 email=form.email.data,
                 name=form.name.data,
@@ -84,7 +101,8 @@ def main():
                 age=form.age.data,
                 phone_num=form.phone_num.data,
                 sex=form.sex.data,
-                avatar=str(url_for('static', filename=f'images/2021056-0.jpeg'))
+                avatar=str(url_for('static', filename=f'images/2021056-0.jpeg')),
+                unic_code=str(generator())
             )
             user.set_password(form.password.data)
             db_sess.add(user)
@@ -440,6 +458,14 @@ def main():
                                    im_file_sport=im_file_sport, im_file_lernen=im_file_lernen, im_file_malen=im_file_malen,
                                    im_file_mysik=im_file_mysik, im_file_shutze=im_file_shutze,
                                im_file_human=im_file_human, image=image, profil=profil)
+
+    @app.errorhandler(404)
+    def not_found(error):
+        return make_response(jsonify({'error': 'Not found'}), 404)
+
+    @app.errorhandler(400)
+    def bad_request(_):
+        return make_response(jsonify({'error': 'Bad Request'}), 400)
 
     app.run(port=8080, debug=True)
 

@@ -14,6 +14,7 @@ class User(SqlAlchemyBase, UserMixin, SerializerMixin):
                            primary_key=True, autoincrement=True)
     email = sqlalchemy.Column(sqlalchemy.String,
                               index=True, unique=True, nullable=True)
+    unic_code = sqlalchemy.Column(sqlalchemy.CHAR, nullable=False, unique=True)
     hashed_password = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     name = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     place_job_study = sqlalchemy.Column(sqlalchemy.String, nullable=True)
@@ -25,6 +26,7 @@ class User(SqlAlchemyBase, UserMixin, SerializerMixin):
                                       default=datetime.datetime.now())
     avatar = sqlalchemy.Column(sqlalchemy.String, default='http://127.0.0.1:5000/static/images/2021056-0.jpeg')
     file = orm.relationship('Files', back_populates='user')
+
 
     def __repr__(self):
         return f'<USER> {self.id} {self.name} {self.email} {self.phone_num} {self.place_job_study} {self.sex} {self.address} '

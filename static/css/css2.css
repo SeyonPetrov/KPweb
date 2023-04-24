@@ -47,10 +47,35 @@ footer {
   position: relative;
   background-color: #cbbc97;
   color: black;
-  padding: 0.2rem 2rem;
+  padding: 0.2rem 1.5rem;
   transition: 0.3s;
   border: none;
+  right: -11rem;
+  top: -2.2rem;
 }
 .logout:hover {
   color: white;
+}
+.user {
+  font-weight: bold;
+  position: relative;
+  display: block;
+  top: -30rem;
+  left: 6.5rem;
+}
+bbt, bbt2 {
+  position: relative;
+  display: block;
+  top: 40rem;
+}
+.tbl {
+  display: block;
+  width: 15rem;
+}
+    .in-tbl {
+  font-weight: bold;
+}
+.u1 {
+  top: -29rem;
+  left: 3rem;
 }
