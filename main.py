@@ -414,6 +414,7 @@ def main():
     @app.route('/portfolio/<int:id>', methods=['POST', 'GET'])
     def portfolio(id):
         global profil
+        print(id)
         db_sess = db_session.create_session()
         user = db_sess.query(User).filter(User.id == id).first()
         js = url_for('static', filename='lg/jquery.js')
