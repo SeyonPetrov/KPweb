@@ -114,19 +114,21 @@
                     <ul class="u-nav u-unstyled u-nav-1 list">
                         <li class="u-nav-item">
                             <a class="u-active-white u-button-style u-nav-link u-text-custom-color-6"
-                               href="/">Главная
+                               href="/">ГЛАВНАЯ
                             </a>
                         </li>
                         <li class="u-nav-item">
                             <a class="u-active-white u-button-style u-nav-link u-text-custom-color-6"
-                               href="Страница-1.html">Профиль
+                               href="Страница-1.html">ПРОФИЛЬ
                             </a>
                         </li>
                     </ul>
                 </div>
             </nav>
             <p class="u-text u-text-white u-text-1 gol align-middle">ПОРТФ​ОЛИО </p>
+
         </div>
+
     </header>
     <form action="" method="post">
         {{ form.hidden_tag() }}
@@ -143,8 +145,8 @@
           <p class="b2" style="margin-top:0;border:0;">{{ form.submit(type="submit", class="btn-for") }}</p>
         </div>
         {{message}}
-    </form>
-
+    </form><br>
+    <p>{{ text.text(type="text", class="fact") }}</p>
     <footer class="fixed-bottom">
           <div class="flex-column">
               <a href="https://bootstrap-4.ru/" class="foo" target="_blank">Bootstrap</a>

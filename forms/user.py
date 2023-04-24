@@ -3,6 +3,9 @@ from wtforms import PasswordField, StringField, TextAreaField, SubmitField, Emai
     RadioField
 from wtforms.validators import DataRequired
 from фнекдот import joke
+import requests
+import random
+from deep_translator import GoogleTranslator
 
 
 class RegisterForm(FlaskForm):
@@ -42,5 +45,18 @@ class IDForm(FlaskForm):
 
 class AnecForm(FlaskForm):
     text = TextAreaField('', render_kw={'placeholder': joke()})
+
+
+def transfer(mytext):
+    trns = GoogleTranslator(source='auto', target='ru').translate(mytext)
+    return trns
+
+
+class TextApiForm(FlaskForm):
+    fact = requests.get(f'http://numbersapi.com/random/{random.choice(["trivia", "math"])}?json').json()
+    trans_f = transfer(str(fact['text']))
+    text = TextAreaField(f'', render_kw={
+        'placeholder': f'{trans_f}'
+    })
 
 

@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, abort, request, url_for
 from data import db_session
 from data.files import Files
 from data.users import User
-from forms.user import RegisterForm, LoginForm, IDForm, AnecForm
+from forms.user import RegisterForm, LoginForm, IDForm, AnecForm, TextApiForm
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 
 app = Flask(__name__)
@@ -41,7 +41,10 @@ def main():
                 add_news()
                 print(id)
                 return redirect(f'/portfolio/{id}')
-            return render_template("Главная.html", js=jvnicepage, js2=js, glav=glav, glavcss=glavccs, str1=str1ccs, str2=str1ccs, ni=nicepageccs, reg=reg, log=ou, form=form, css=css)
+            return render_template("Главная.html", js=jvnicepage, js2=js,
+                                   glav=glav, glavcss=glavccs, str1=str1ccs,
+                                   str2=str1ccs, ni=nicepageccs, reg=reg,
+                                   log=ou, form=form, css=css, text=TextApiForm())
         if form.validate_on_submit():
             id = form.id.data
             add_news()
@@ -58,7 +61,7 @@ def main():
             return redirect(f'/portfolio/{id}')
 
         return render_template('Главная.html', title='Регистрация',
-                               form=form)
+                               form=form, text=TextApiForm())
 
     @app.route('/register', methods=['GET', 'POST'])
     def register():

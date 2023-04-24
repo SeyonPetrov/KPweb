@@ -6,7 +6,7 @@
         {{ form.hidden_tag() }}
         <p class="wnd-hd">АВТОРИЗАЦИЯ</p>
         <p>
-            {{ form.email(class="in_wnd", type="email") }}<br>
+            {{ form.email(class="in_wnd", type="email") }}
             {% for error in form.email.errors %}
                 <div class="alert alert-danger" role="alert">
                     {{ error }}
@@ -14,7 +14,7 @@
             {% endfor %}
         </p>
         <p>
-            {{ form.password(class="in_wnd", type="password") }}<br>
+            {{ form.password(class="in_wnd doo", type="password") }}
             {% for error in form.password.errors %}
                 <div class="alert alert-danger" role="alert">
                     {{ error }}

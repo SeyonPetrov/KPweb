@@ -89,6 +89,8 @@ div#main_text a.close_window {
   transition: 0.5s;
   font-weight: bold;
   border: none;
+  position: relative;
+  top: -2rem;
 }
 .wnd-bt2:hover {
   background-color: #9dafb3;
@@ -113,10 +115,12 @@ header {
 
 }
 footer {
+  display: block;
   background-color: #323433;
   color: white;
   text-align: center;
-  padding: 2.5% 0;
+  padding: 2.5% auto;
+  flex-direction: column;
 }
 .logo {
   text-align: center;
@@ -170,9 +174,6 @@ a {
 .foo:hover {
   color: white;
 }
-.dop-bt {
-  top: -3rem;
-}
 .age {
   width: 70%
 }
@@ -190,4 +191,8 @@ a {
   display: block;
   border: none;
   margin-top: 5rem;
+}
+.doo {
+  position: relative
+  top:-2rem;
 }

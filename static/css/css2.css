@@ -1,0 +1,56 @@
+.foo {
+  text-decoration: none;
+  color: gray;
+  transition: 0.3s;
+}
+.foo:hover {
+  color: white;
+}
+.window {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    width: 400px;
+    border-radius: 20px;
+    padding: 1em 2rem 0;
+    transform: translate(-50%,-50%);
+    background-color: #fafafa;
+    margin-bottom: 50rem;
+}
+header {
+  height: 10%;
+}
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+html {
+  height: 100%;
+}
+footer {
+  flex-shrink: 0;
+}
+.fact {
+  width: 19rem;
+  height: 20rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  margin-top: 3rem;
+  border: none;
+}
+.logout {
+  display: block;
+  position: relative;
+  background-color: #cbbc97;
+  color: black;
+  padding: 0.2rem 2rem;
+  transition: 0.3s;
+  border: none;
+}
+.logout:hover {
+  color: white;
+}
