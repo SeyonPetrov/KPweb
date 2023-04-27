@@ -79,3 +79,20 @@ bbt, bbt2 {
   top: -29rem;
   left: 3rem;
 }
+.b4 {
+  position: relative;
+  background-color: #81979b;
+  color: white;
+  padding: 1.2rem 7rem;
+  border-radius: 35px;
+  width: 30%;
+  left: 31rem;
+  text-align: center;
+  top: -3rem;
+  transition: 0.3s;
+}
+.b4:hover {
+  background-color: #9dafb3;
+  color: #FFEFDF;
+  box-shadow: 7px 7px 7px #cccccc;
+}

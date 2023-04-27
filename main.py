@@ -5,7 +5,7 @@ from data.users import User
 import requests
 from flask_restful import Api
 from restApi import UsersResource, UsersListRes
-from forms.user import RegisterForm, LoginForm, IDForm, AnecForm, TextApiForm
+from forms.user import RegisterForm, LoginForm, IDForm, AnecForm, TextApiForm, JustForm
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 
 app = Flask(__name__)
@@ -411,10 +411,18 @@ def main():
             db_sess.commit()
             return redirect('/Страница-1.html')
 
+    @app.route('/all_profs', methods=['GET', 'POST'])
+    def all_profs():
+        form = JustForm()
+
+        sess = db_session.create_session()
+        als = sess.query(User).all()
+
+        return render_template('all_prof.html', form=form, spis=als)
+
     @app.route('/portfolio/<int:id>', methods=['POST', 'GET'])
     def portfolio(id):
         global profil
-        print(id)
         db_sess = db_session.create_session()
         user = db_sess.query(User).filter(User.id == id).first()
         js = url_for('static', filename='lg/jquery.js')

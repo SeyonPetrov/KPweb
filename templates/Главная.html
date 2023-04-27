@@ -60,12 +60,6 @@
         .main {
           margin-top: 15%;
         }
-        .b1 {
-          vertical-align: center;
-          margin-left: auto;
-          margin-right: auto;
-
-        }
         .b2 {
           margin-left: auto;
           margin-right: auto;
@@ -73,13 +67,16 @@
 
         }
         .btn-for {
+          position: relative;
           background-color: #81979b;
           color: white;
-          border-radius: 35px;
-          padding: 1.2rem 10rem;
-          transition: 0.5s;
+          border-radius: 0 35px 35px 0;
+          padding: 1.3rem 3rem;
+          transition: 0.3s;
           font-weight: bold;
           border: none;
+          top: -5.65rem;
+          left: 12rem;
         }
         .btn-for:hover {
           background-color: #9dafb3;
@@ -87,12 +84,12 @@
           box-shadow: 7px 7px 7px #cccccc;
         }
         .pole {
-          margin-left: auto;
-          margin-right: auto;
+          position: relative;
           display: block;
-          padding: 1.2rem 12rem;
+          padding: 1.2rem 5rem;
           border-radius: 25px;
           border-color: #a9bcc2;
+          left: 26rem;
         }
         .gol {
           top:-4.5rem;
@@ -103,6 +100,16 @@
         }
         .for-crd {
           top: 5rem;
+        }
+        .bb {
+          position: relative;
+          background-color: #81979b;
+          color: white;
+          border-radius: 0 35px 35px 0;
+          padding: 1.3rem 3rem;
+          transition: 0.5s;
+          font-weight: bold;
+          border: none;
         }
     </style>
 </head>
@@ -147,6 +154,7 @@
         </div>
         {{message}}
     </form><br>
+    <a href="/all_profs" class="b4" style="text-decoration:none;">ВСЕ ПРОФИЛИ</a>
     <p>{{ text.text(type="text", class="fact") }}</p>
     <footer class="fixed-bottom">
           <div class="flex-column">

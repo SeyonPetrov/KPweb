@@ -35,8 +35,8 @@
                 style="border-top:none;border-bottom:none;border-left:none;">
               {{ form.hidden_tag() }}
 
-              <p class="b1">
-                {{ form.id(type="text", class="pole", size=30) }}
+              <p>
+                {{ form.id(type="text", class="pole for-pol", size=30) }}
 
                 {% for error in form.id.errors %}
                     <div class="alert alert-danger" role="alert">
@@ -45,7 +45,7 @@
                 {% endfor %}
 
               </p>
-              <p class="b2" style="margin-top:0;border:0;">{{ form.submit(type="submit", class="btn-for") }}</p>
+              <p class="b3" style="margin-top:0;border:0;">{{ form.submit(type="submit", class="btn-for slise") }}</p>
 
               {{message}}
           </form>
@@ -62,6 +62,7 @@
             </a>
           </div>
       </div>
+      <a href="/all_profs" class="b4 btn-for" style="text-decoration:none;">ВСЕ ПРОФИЛИ</a>
       <p class="for-joke">{{ anec.text(type=text, class="joke") }}</p>
       <footer class="fixed-bottom" id="sec-5a24">
           <div class="flex-column">

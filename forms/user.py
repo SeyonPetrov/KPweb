@@ -60,3 +60,7 @@ class TextApiForm(FlaskForm):
     })
 
 
+class JustForm(FlaskForm):
+    pass
+
+
